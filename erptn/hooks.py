@@ -9,7 +9,7 @@ app_color = "grey"
 app_email = "ahmed.fourati97@gmail.com"
 app_license = "MIT"
 
-# Includes in <head>
+# Includes in <heads>
 # ------------------
 
 # include js, css files in header of desk.html
