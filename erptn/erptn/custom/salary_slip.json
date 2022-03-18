@@ -1,0 +1,40 @@
+{
+  "custom_fields": [
+    {
+      "creation": "2020-10-19 11:00:05.000000",
+      "modified": "2020-10-19 11:00:06.000000",
+      "dt": "Salary Slip",
+      "insert_after": "total_deduction",
+      "fieldname": "salary_imp",
+      "fieldtype": "Float",
+      "read_only": 1,
+      "label": "Salary Taxable"
+    },
+   {
+      "creation": "2020-10-19 11:00:05.000000",
+      "modified": "2020-10-19 11:00:06.000000",
+      "dt": "Salary Slip",
+      "insert_after": "gross_year_to_date",
+      "fieldname": "salary_imp_year",
+      "fieldtype": "Float",
+      "read_only": 1,
+      "label": "Salary Taxable Annaully"
+    },
+   {
+      "creation": "2020-10-19 11:00:05.000000",
+      "modified": "2020-10-19 11:00:06.000000",
+      "dt": "Salary Slip",
+      "insert_after": "salary_imp",
+      "fieldname": "deduct_impot",
+      "fieldtype": "Float",
+      "read_only": 1,
+      "label": "Tax Deduction"
+    }
+   ],
+   "custom_perms": [],
+   "doctype": "Salary Slip",
+   "property_setters": [],
+   "sync_on_migrate": 1
+}
+
+

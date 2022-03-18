@@ -32,6 +32,9 @@ app_license = "MIT"
 
 # include js in doctype views
 doctype_js = {"Employee" : "overrides/employee/employee.js"}
+#override_doctype_class = {
+#    "Salary Slip": "erptn.overrides.salary_slip.salary_slip.CustomSalarySlip"
+#}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
