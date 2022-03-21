@@ -51,7 +51,7 @@
         "creation": "2020-10-19 11:00:05.000000",
         "modified": "2020-10-19 11:00:06.000000",
         "dt": "Employee",
-        "insert_after": "n_e_c",
+        "insert_after": "c_d_f",
         "fieldname": "n_e_b",
         "fieldtype": "Int",
         "label": "Nombre d'enfants a étudiant et non boursier"
@@ -60,7 +60,7 @@
 	"creation": "2020-10-19 11:00:05.000000",
         "modified": "2020-10-19 11:00:06.000000",
         "dt": "Employee",
-        "insert_after": "n_e_b",
+        "insert_after": "c_d_f",
    	"fieldname": "column_break_250",
    	"fieldtype": "Column Break"
     },

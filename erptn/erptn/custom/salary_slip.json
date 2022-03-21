@@ -29,7 +29,18 @@
       "fieldtype": "Float",
       "read_only": 1,
       "label": "Tax Deduction"
+    },
+{
+      "creation": "2020-10-19 11:00:05.000000",
+      "modified": "2020-10-19 11:00:06.000000",
+      "dt": "Salary Slip",
+      "insert_after": "deduct_impot",
+      "fieldname": "income_tax",
+      "fieldtype": "Float",
+      "read_only": 1,
+      "label": "Income Tax"
     }
+
    ],
    "custom_perms": [],
    "doctype": "Salary Slip",
