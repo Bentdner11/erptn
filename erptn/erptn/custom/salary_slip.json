@@ -5,47 +5,55 @@
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Salary Slip",
       "insert_after": "total_deduction",
-      "fieldname": "salary_imp",
+      "fieldname": "social_salary",
       "fieldtype": "Float",
       "read_only": 1,
-      "label": "Salary Taxable"
+      "label": "Annual net social salary "
     },
    {
-      "creation": "2020-10-19 11:00:05.000000",
-      "modified": "2020-10-19 11:00:06.000000",
-      "dt": "Salary Slip",
-      "insert_after": "gross_year_to_date",
-      "fieldname": "salary_imp_year",
-      "fieldtype": "Float",
-      "read_only": 1,
-      "label": "Salary Taxable Annaully"
-    },
-   {
-      "creation": "2020-10-19 11:00:05.000000",
-      "modified": "2020-10-19 11:00:06.000000",
-      "dt": "Salary Slip",
-      "insert_after": "salary_imp",
-      "fieldname": "deduct_impot",
-      "fieldtype": "Float",
-      "read_only": 1,
-      "label": "Tax Deduction"
-    },
-{
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Salary Slip",
       "insert_after": "deduct_impot",
-      "fieldname": "income_tax",
+      "fieldname": "tax_salary",
       "fieldtype": "Float",
       "read_only": 1,
-      "label": "Income Tax"
+      "label": "Annual net taxable salary"
+    },
+   {
+      "creation": "2020-10-19 11:00:05.000000",
+      "modified": "2020-10-19 11:00:06.000000",
+      "dt": "Salary Slip",
+      "insert_after": "tax_salary",
+      "fieldname": "net_salary",
+      "fieldtype": "Float",
+      "read_only": 1,
+      "label": "Net salary"
+    },
+   {
+      "creation": "2020-10-19 11:00:05.000000",
+      "modified": "2020-10-19 11:00:06.000000",
+      "dt": "Salary Slip",
+      "insert_after": "net_salary",
+      "fieldname": "p_net_salary",
+      "fieldtype": "Float",
+      "read_only": 1,
+      "label": "Paid net salary"
+    },
+   {
+      "creation": "2020-10-19 11:00:05.000000",
+      "modified": "2020-10-19 11:00:06.000000",
+      "dt": "Salary Slip",
+      "insert_after": "total_deduction",
+      "fieldname": "deduct_impot",
+      "fieldtype": "Float",
+      "read_only": 1,
+	   "label": "Commun deduction"
     }
 
    ],
    "custom_perms": [],
-   "doctype": "Salary Slip",
+  "doctype": "Salary Slip",
    "property_setters": [],
    "sync_on_migrate": 1
 }
-
-
