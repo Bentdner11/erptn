@@ -13,6 +13,16 @@
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Employee",
+      "insert_after": "irpp_detail_sec_break",
+      "fieldname": "deduct_impot",
+      "fieldtype": "Currency",
+	   "read_only": 1,
+      "label": "Commun deduction"
+    },
+    {
+      "creation": "2020-10-19 11:00:05.000000",
+      "modified": "2020-10-19 11:00:06.000000",
+      "dt": "Employee",
       "insert_after": "employee_name",
       "fieldname": "cin",
       "fieldtype": "Data",
@@ -35,7 +45,7 @@
 	"insert_after": "irpp_detail_sec_break",
   	"fieldname": "c_d_f",
    	"fieldtype": "Select",
-   	"label": "Check de famille",
+   	"label": "Chef de famille",
    	"options": "Oui\nNon"
     },
     {
@@ -45,7 +55,7 @@
         "insert_after": "c_d_f",
         "fieldname": "n_e_c",
         "fieldtype": "Int",
-        "label": "Nombre d'enfants a charge"
+        "label": "Nombre d'enfants pris-en charge"
     },
     {
         "creation": "2020-10-19 11:00:05.000000",
@@ -54,7 +64,7 @@
         "insert_after": "c_d_f",
         "fieldname": "n_e_b",
         "fieldtype": "Int",
-        "label": "Nombre d'enfants a étudiant et non boursier"
+        "label": "Nombre d'enfants étudiants et non boursier"
     },
     {
 	"creation": "2020-10-19 11:00:05.000000",
@@ -71,7 +81,7 @@
       "insert_after": "irpp_detail_sec_break",
       "fieldname": "autre",
       "fieldtype": "Currency",
-      "label": "autres"
+      "label": "Autres"
     },
     {
       "creation": "2020-10-19 11:00:05.000000",
@@ -80,16 +90,16 @@
       "insert_after": "epargne_banque",
       "fieldname": "habitation",
       "fieldtype": "Currency",
-      "label": "interet emprunt habitation"
+      "label": "Interet emprunt habitation"
     },
     {
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Employee",
       "insert_after": "autre",
-      "fieldname": "emprunt_obligatoire",
+      "fieldname": "Emprunt_obligatoire",
       "fieldtype": "Currency",
-      "label": "interet emprunt obligatoire"
+      "label": "Interet emprunt obligatoire"
     },
     {
       "creation": "2020-10-19 11:00:05.000000",
@@ -98,7 +108,7 @@
       "insert_after": "c_d_f",
       "fieldname": "epargne_poste",
       "fieldtype": "Currency",
-      "label": "interet compte epargne poste"
+      "label": "Interet compte epargne poste"
     },
     {
         "creation": "2020-10-19 11:00:05.000000",
@@ -107,16 +117,7 @@
         "insert_after": "column_break_250",
         "fieldname": "n_e_h",
         "fieldtype": "Int",
-        "label": "Nombre d'enfants handicape"
-    },
-    {
-      "creation": "2020-10-19 11:00:05.000000",
-      "modified": "2020-10-19 11:00:06.000000",
-      "dt": "Employee",
-      "insert_after": "column_break_250",
-      "fieldname": "epargne_banque",
-      "fieldtype": "Currency",
-      "label": "interet compte epargne banque"
+        "label": "Nombre d'enfants infirmes"
     },
     {
         "creation": "2020-10-19 11:00:05.000000",
@@ -125,7 +126,16 @@
         "insert_after": "n_e_h",
         "fieldname": "n_p_c",
         "fieldtype": "Int",
-        "label": "Nombre de parents a charge"
+        "label": "Nombre de parents en charge"
+    },
+    {
+      "creation": "2020-10-19 11:00:05.000000",
+      "modified": "2020-10-19 11:00:06.000000",
+      "dt": "Employee",
+      "insert_after": "column_break_250",
+      "fieldname": "epargne_banque",
+      "fieldtype": "Currency",
+      "label": "Interet compte epargne banque"
     }
 
    ],

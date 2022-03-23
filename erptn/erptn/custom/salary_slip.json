@@ -40,6 +40,26 @@
       "read_only": 1,
       "label": "Paid net salary"
     },
+    {
+      "creation": "2020-10-19 11:00:05.000000",
+      "modified": "2020-10-19 11:00:06.000000",
+      "dt": "Salary Slip",
+      "insert_after": "gross_year_to_date",
+      "fieldname": "n_p_c",
+      "fieldtype": "Int",
+      "read_only": 1,
+      "label": "Nombre de parents en charge"
+    },
+    {
+      "creation": "2020-10-19 11:00:05.000000",
+      "modified": "2020-10-19 11:00:06.000000",
+      "dt": "Salary Slip",
+      "insert_after": "n_p_c",
+      "fieldname": "tot_deduct",
+      "fieldtype": "Float",
+      "read_only": 1,
+      "label": "Deduction totale "
+    },
    {
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
