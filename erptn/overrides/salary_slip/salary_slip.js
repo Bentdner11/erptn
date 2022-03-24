@@ -2,8 +2,10 @@ frappe.ui.form.on('Salary Slip', {
 	employee:function(frm) {
 		var parent = 0 ;
 		var cot_pro = 0 ;
-		var deduct=0;
-		var npc=0;
+		var deduct=0 ;
+		var npc=0 ;
+		var css = 0 ;
+		var tax = 0 ;
 //		frm.doc.tax_salary = 0 ;
 //		frm.doc.tot_deduct = 0 ;
 		frappe.call({
@@ -15,10 +17,10 @@ frappe.ui.form.on('Salary Slip', {
                 callback(r) {
                     if(r.message) {
                         var empl = r.message;
-                        frm.set_value("deduct_impot",empl.deduct_impot || 0);
-                        frm.set_value("n_p_c",empl.n_p_c || 0);
+                        frm.set_value("deduct_impot",empl.deduct_impot);
+                        frm.set_value("n_p_c",empl.n_p_c);
 			deduct=empl.deduct_impot;
-			npc=empl.n_p_c || 0;
+			npc=empl.n_p_c ;
                     }}
                });
 	       frm.refresh_field("deduct_impot");
@@ -34,6 +36,7 @@ frappe.ui.form.on('Salary Slip', {
 	if ( cot_pro > 2000 ){
 	cot_pro = 2000;
 	}
+	
 	parent = frm.doc.social_salary * 0.05;
 	if (parent < 450) {
 	parent = npc * parent ;}
@@ -41,6 +44,22 @@ frappe.ui.form.on('Salary Slip', {
 	parent = 450 * npc;}
 	frm.doc.tot_deduct += deduct + parent + cot_pro;
         frm.doc.tax_salary =frm.doc.social_salary - frm.doc.tot_deduct;
+	css = frm.doc.tax_salary*0.01;
+	if (frm.doc.tax_salary<5000){
+		tax=0;
+	}
+	else if (frm.doc.tax_salary>5000 && frm.doc.tax_salary<20000){
+		tax=(frm.doc.tax_salary-5000)*0.26;
+		//console.log(tax);
+	}
+	else if (frm.doc.tax_salary>20000 && frm.doc.tax_salary<30000){
+		(tax=frm.doc.tax_salary-20000)*0.28+3900;
+	}
+	else if (frm.doc.tax_salary>30000 && frm.doc.tax_salary<50000){
+		(tax=frm.doc.tax_salary-30000)*0.32+3900+2800;
+	}
+	else {(tax=frm.doc.tax_salar-50000)*0.35+3900+2800+6400;}
+	frm.doc.net_salary=(frm.doc.tax_salary-tax-css)/12;
     	}
 
  })
