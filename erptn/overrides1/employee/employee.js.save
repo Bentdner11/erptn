@@ -1,0 +1,26 @@
+frappe.ui.form.on('Employee', {
+    validate: function(frm){
+        var regex = /[^0-9]/g;
+        if (frm.doc.cnss_id && regex.test(frm.doc.cnss_id) === true){
+                msgprint(__("CNSS Identifier: Only numbers are allowed."));
+                validated = false;
+		return false;
+        }
+	if (frm.doc.cin && regex.test(frm.doc.cin) === true){
+                msgprint(__("National ID: Only numbers are allowed."));
+                validated = false;
+		return false;
+        }
+	if (frm.doc.cin && frm.doc.cin.length != 8){
+		msgprint(__("National ID: National ID must contain 8 numbers."));
+                validated = false;
+                return false;
+	}
+	if (frm.doc.cnss_id && frm.doc.cnss_id.length != 10){
+              	msgprint(__("CNSS Identifier: CNSS Identifier must contain 10 numbers."));
+                validated = false;
+                return false;
+        }
+        
+    }
+});
