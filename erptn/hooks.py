@@ -31,10 +31,13 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-doctype_js = {"Employee" : "overrides/employee/employee.js","Salary Slip" : "overrides/salary_slip/salary_slip.js"}
-#override_doctype_class = {
-#    "Salary Slip": "erptn.overrides.salary_slip.salary_slip.CustomSalarySlip"
-#}
+doctype_js = {"Employee" : "overrides1/employee/employee.js",
+#"Salary Slip" : "overrides1/salary_slip/salary_slip.js"
+}
+override_doctype_class = {
+    "Salary Slip": "erptn.erptn.overrides.salary_slip.salary_slip.CustomSalarySlip",
+    "Employee": "erptn.overrides1.employee.employee.CustomEmployee"
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -98,12 +101,7 @@ doctype_js = {"Employee" : "overrides/employee/employee.js","Salary Slip" : "ove
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
+#doc_events = {
 # }
 
 # Scheduled Tasks

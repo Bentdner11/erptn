@@ -1,0 +1,154 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-04-04 08:58:34.099758",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "rules_detail_sec_break",
+  "max_enfants",
+  "deduct_chef",
+  "deduct_enfant1",
+  "deduct_enfant2",
+  "deduct_enfant3",
+  "deduct_enfant4",
+  "deduct_infirm",
+  "deduct_non_bour",
+  "max_parents",
+  "column_break_123",
+  "plafond_parent",
+  "pourcent_parent",
+  "max_banque",
+  "max_poste",
+  "max_obligatoire",
+  "pourc_cnss",
+  "pourc_pro",
+  "plafond_pro",
+  "pourc_css"
+ ],
+ "fields": [
+  {
+   "fieldname": "rules_detail_sec_break",
+   "fieldtype": "Section Break",
+   "label": "les regles des tax plafonds et r\u00e8gles divers"
+  },
+  {
+   "fieldname": "max_enfants",
+   "fieldtype": "Int",
+   "label": "Nombre max des enfants sous couverture sociale"
+  },
+  {
+   "fieldname": "deduct_chef",
+   "fieldtype": "Currency",
+   "label": "Montant deduction chef de famille"
+  },
+  {
+   "fieldname": "deduct_infirm",
+   "fieldtype": "Currency",
+   "label": "Montant deduction un enfant infirme pris-en charge"
+  },
+  {
+   "fieldname": "deduct_non_bour",
+   "fieldtype": "Currency",
+   "label": "Montant deduction un enfant non boursier pris-en charge"
+  },
+  {
+   "fieldname": "max_parents",
+   "fieldtype": "Int",
+   "label": "Nombre max des parents pris-en charge"
+  },
+  {
+   "fieldname": "plafond_parent",
+   "fieldtype": "Currency",
+   "label": "Montant plafond deduction parent pris-en charge"
+  },
+  {
+   "fieldname": "pourcent_parent",
+   "fieldtype": "Percent",
+   "label": "% du salaire net imposable pour deduction parents"
+  },
+  {
+   "fieldname": "column_break_123",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "max_banque",
+   "fieldtype": "Currency",
+   "label": "Deduction maximale dinteret compte epargne banque"
+  },
+  {
+   "fieldname": "max_poste",
+   "fieldtype": "Currency",
+   "label": "Deduction maximale dinteret compte epargne poste"
+  },
+  {
+   "fieldname": "max_obligatoire",
+   "fieldtype": "Currency",
+   "label": "Deduction maximale dinteret emprunt obligatoire"
+  },
+  {
+   "fieldname": "pourc_cnss",
+   "fieldtype": "Percent",
+   "label": "% CNSS du salaire brut"
+  },
+  {
+   "fieldname": "pourc_pro",
+   "fieldtype": "Percent",
+   "label": "% frais professionnel"
+  },
+  {
+   "fieldname": "plafond_pro",
+   "fieldtype": "Currency",
+   "label": "Cotisation maximale des frais professionnel"
+  },
+  {
+   "fieldname": "pourc_css",
+   "fieldtype": "Percent",
+   "label": "Pourcentage de contribution sociale de solidarit\u00e9"
+  },
+  {
+   "fieldname": "deduct_enfant1",
+   "fieldtype": "Currency",
+   "label": "Montant deduction 1er enfant pris-en charge"
+  },
+  {
+   "fieldname": "deduct_enfant2",
+   "fieldtype": "Currency",
+   "label": "Montant deduction 2eme enfant pris-en charge"
+  },
+  {
+   "fieldname": "deduct_enfant3",
+   "fieldtype": "Currency",
+   "label": "Montant deduction 3eme enfant pris-en charge"
+  },
+  {
+   "fieldname": "deduct_enfant4",
+   "fieldtype": "Data",
+   "label": "Montant deduction 4eme enfant pris-en charge"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-04-04 11:35:29.710061",
+ "modified_by": "Administrator",
+ "module": "erptn",
+ "name": "taxes et cotisation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

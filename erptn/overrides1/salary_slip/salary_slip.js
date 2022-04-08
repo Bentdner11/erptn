@@ -19,9 +19,9 @@ frappe.ui.form.on('Salary Slip', {
                 callback(r) {
                     if(r.message) {
                         var empl = r.message;
-                        frm.set_value("deduct_impot",empl.deduct_impot);
+                        frm.set_value("deduct_impot",empl.deduction_impot);
                         frm.set_value("n_p_c",empl.n_p_c);
-			deduct=empl.deduct_impot;
+			deduct=empl.deduction_impot;
 			console.log("la dedcution est "+deduct);
 			npc=empl.n_p_c ;
                     }}
@@ -33,6 +33,7 @@ frappe.ui.form.on('Salary Slip', {
 	    if (frm.doc.deductions[i].abbr == "CS" || frm.doc.deductions[i].abbr == "cnss"){
 
 	         frm.doc.social_salary = (frm.doc.gross_pay - parseFloat(frm.doc.deductions[i].amount))*12;
+		 console.log(frm.doc.social_salary);
 	    }
 	    }
 	cot_pro = frm.doc.social_salary * 0.1 ;

@@ -4,7 +4,7 @@
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Salary Slip",
-      "insert_after": "total_deduction",
+      "insert_after": "base_gross_year_to_date",
       "fieldname": "social_salary",
       "fieldtype": "Float",
       "read_only": 1,
@@ -14,61 +14,11 @@
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Salary Slip",
-      "insert_after": "deduct_impot",
+      "insert_after": "social_salary",
       "fieldname": "tax_salary",
       "fieldtype": "Float",
       "read_only": 1,
       "label": "Annual net taxable salary"
-    },
-   {
-      "creation": "2020-10-19 11:00:05.000000",
-      "modified": "2020-10-19 11:00:06.000000",
-      "dt": "Salary Slip",
-      "insert_after": "tax_salary",
-      "fieldname": "net_salary",
-      "fieldtype": "Float",
-      "read_only": 1,
-      "label": "Net salary"
-    },
-   {
-      "creation": "2020-10-19 11:00:05.000000",
-      "modified": "2020-10-19 11:00:06.000000",
-      "dt": "Salary Slip",
-      "insert_after": "net_salary",
-      "fieldname": "p_net_salary",
-      "fieldtype": "Float",
-      "read_only": 1,
-      "label": "Paid net salary"
-    },
-    {
-      "creation": "2020-10-19 11:00:05.000000",
-      "modified": "2020-10-19 11:00:06.000000",
-      "dt": "Salary Slip",
-      "insert_after": "gross_year_to_date",
-      "fieldname": "n_p_c",
-      "fieldtype": "Int",
-      "read_only": 1,
-      "label": "Nombre de parents en charge"
-    },
-    {
-      "creation": "2020-10-19 11:00:05.000000",
-      "modified": "2020-10-19 11:00:06.000000",
-      "dt": "Salary Slip",
-      "insert_after": "n_p_c",
-      "fieldname": "tot_deduct",
-      "fieldtype": "Float",
-      "read_only": 1,
-      "label": "Deduction totale "
-    },
-   {
-      "creation": "2020-10-19 11:00:05.000000",
-      "modified": "2020-10-19 11:00:06.000000",
-      "dt": "Salary Slip",
-      "insert_after": "total_deduction",
-      "fieldname": "deduct_impot",
-      "fieldtype": "Float",
-      "read_only": 1,
-	   "label": "Commun deduction"
     }
 
    ],

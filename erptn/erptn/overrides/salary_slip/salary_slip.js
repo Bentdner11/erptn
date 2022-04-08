@@ -1,4 +1,4 @@
-frappe.ui.form.on('Salary Slip', {
+/*frappe.ui.form.on('Salary Slip', {
 	employee:function(frm) {
 		var parent = 0 ;
 		var cot_pro = 0 ;
@@ -6,10 +6,12 @@ frappe.ui.form.on('Salary Slip', {
 		var npc=0 ;
 		var css = 0 ;
 		var tax = 0 ;
+		var irpp = 0 ;
 //		frm.doc.tax_salary = 0 ;
 //		frm.doc.tot_deduct = 0 ;
 		frappe.call({
                 method: "frappe.client.get",
+		async:false,
                 args: {
                     doctype: "Employee",
                     name: frm.doc.employee,
@@ -20,6 +22,7 @@ frappe.ui.form.on('Salary Slip', {
                         frm.set_value("deduct_impot",empl.deduct_impot);
                         frm.set_value("n_p_c",empl.n_p_c);
 			deduct=empl.deduct_impot;
+			console.log("la dedcution est "+deduct);
 			npc=empl.n_p_c ;
                     }}
                });
@@ -36,15 +39,17 @@ frappe.ui.form.on('Salary Slip', {
 	if ( cot_pro > 2000 ){
 	cot_pro = 2000;
 	}
-	
 	parent = frm.doc.social_salary * 0.05;
 	if (parent < 450) {
 	parent = npc * parent ;}
 	else {
 	parent = 450 * npc;}
 	frm.doc.tot_deduct += deduct + parent + cot_pro;
+	console.log("la deduction totale est"+frm.doc.total_deduct);
+	console.log("la dedcution est "+deduct);
         frm.doc.tax_salary =frm.doc.social_salary - frm.doc.tot_deduct;
-	css = frm.doc.tax_salary*0.01;
+	css = frm.doc.tax_salary*0.01/12;
+	console.log("le css ="+css);
 	if (frm.doc.tax_salary<5000){
 		tax=0;
 	}
@@ -53,13 +58,16 @@ frappe.ui.form.on('Salary Slip', {
 		//console.log(tax);
 	}
 	else if (frm.doc.tax_salary>20000 && frm.doc.tax_salary<30000){
-		(tax=frm.doc.tax_salary-20000)*0.28+3900;
+		tax=(frm.doc.tax_salary-20000)*0.28+3900;
 	}
 	else if (frm.doc.tax_salary>30000 && frm.doc.tax_salary<50000){
-		(tax=frm.doc.tax_salary-30000)*0.32+3900+2800;
+		tax=(frm.doc.tax_salary-30000)*0.32+3900+2800;
 	}
 	else {(tax=frm.doc.tax_salar-50000)*0.35+3900+2800+6400;}
-	frm.doc.net_salary=(frm.doc.tax_salary-tax-css)/12;
+	irpp=tax/12;
+	console.log("irpp"+irpp);
+	frm.doc.net_salary=((frm.doc.social_salary/12)-irpp-css);
+
     	}
 
- })
+ })*/

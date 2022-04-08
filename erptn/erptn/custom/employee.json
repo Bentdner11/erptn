@@ -9,17 +9,16 @@
       "fieldtype": "Data",
       "label": "CNSS Identifier"
     },
-    {
+   {
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Employee",
-      "insert_after": "irpp_detail_sec_break",
-      "fieldname": "deduct_impot",
+      "insert_after": "cnss_id",
+      "fieldname": "salaire_de_base",
       "fieldtype": "Currency",
-	   "read_only": 1,
-      "label": "Commun deduction"
+      "label": "Le salaire de base"
     },
-    {
+	 {
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Employee",
@@ -28,7 +27,7 @@
       "fieldtype": "Data",
       "label": "National ID"
     },
-    {
+	{
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Employee",
@@ -38,17 +37,17 @@
       "fieldtype": "Section Break",
       "label": "Employee IRPP Deduction"
     },
-    {
-	"creation": "2020-10-19 11:00:05.000000",
+	 {
+        "creation": "2020-10-19 11:00:05.000000",
         "modified": "2020-10-19 11:00:06.000000",
         "dt": "Employee",
-	"insert_after": "irpp_detail_sec_break",
-  	"fieldname": "c_d_f",
-   	"fieldtype": "Select",
-   	"label": "Chef de famille",
-   	"options": "Oui\nNon"
+        "insert_after": "irpp_detail_sec_break",
+        "fieldname": "c_d_f",
+        "fieldtype": "Select",
+        "label": "Chef de famille",
+        "options": "Oui\nNon"
     },
-    {
+	{
         "creation": "2020-10-19 11:00:05.000000",
         "modified": "2020-10-19 11:00:06.000000",
         "dt": "Employee",
@@ -57,46 +56,65 @@
         "fieldtype": "Int",
         "label": "Nombre d'enfants pris-en charge"
     },
+	 {
+        "creation": "2020-10-19 11:00:05.000000",
+        "modified": "2020-10-19 11:00:06.000000",
+        "dt": "Employee",
+        "insert_after": "n_e_c",
+        "fieldname": "n_e_h",
+        "fieldtype": "Int",
+        "label": "Nombre d'enfants infirmes"
+    },
+	    {
+        "creation": "2020-10-19 11:00:05.000000",
+        "modified": "2020-10-19 11:00:06.000000",
+        "dt": "Employee",
+        "insert_after": "n_e_h",
+        "fieldname": "n_e_b",
+        "fieldtype": "Int",
+	"default": "0",
+        "label": "Nombre d'enfants étudiants et non boursier"
+    },
+	 {
+        "creation": "2020-10-19 11:00:05.000000",
+        "modified": "2020-10-19 11:00:06.000000",
+        "dt": "Employee",
+        "insert_after": "n_e_b",
+        "fieldname": "n_p_c",
+        "fieldtype": "Int",
+        "label": "Nombre de parents en charge"
+    },
     {
         "creation": "2020-10-19 11:00:05.000000",
         "modified": "2020-10-19 11:00:06.000000",
         "dt": "Employee",
-        "insert_after": "c_d_f",
-        "fieldname": "n_e_b",
-        "fieldtype": "Int",
-        "label": "Nombre d'enfants étudiants et non boursier"
+        "insert_after": "n_p_c",
+        "fieldname": "column_break_250",
+        "fieldtype": "Column Break"
     },
-    {
-	"creation": "2020-10-19 11:00:05.000000",
-        "modified": "2020-10-19 11:00:06.000000",
-        "dt": "Employee",
-        "insert_after": "c_d_f",
-   	"fieldname": "column_break_250",
-   	"fieldtype": "Column Break"
-    },
-{
+	  {
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Employee",
-      "insert_after": "irpp_detail_sec_break",
-      "fieldname": "autre",
+      "insert_after": "column_break_250",
+      "fieldname": "epargne_banque",
       "fieldtype": "Currency",
-      "label": "Autres"
+      "label": "Interet compte epargne banque"
     },
-    {
+	  {
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Employee",
       "insert_after": "epargne_banque",
-      "fieldname": "habitation",
+      "fieldname": "epargne_poste",
       "fieldtype": "Currency",
-      "label": "Interet emprunt habitation"
+      "label": "Interet compte epargne poste"
     },
-    {
+	 {
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Employee",
-      "insert_after": "autre",
+      "insert_after": "epargne_poste",
       "fieldname": "Emprunt_obligatoire",
       "fieldtype": "Currency",
       "label": "Interet emprunt obligatoire"
@@ -105,38 +123,29 @@
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Employee",
-      "insert_after": "c_d_f",
-      "fieldname": "epargne_poste",
+      "insert_after": "Emprunt_obligatoire",
+      "fieldname": "habitation",
       "fieldtype": "Currency",
-      "label": "Interet compte epargne poste"
-    },
-    {
-        "creation": "2020-10-19 11:00:05.000000",
-        "modified": "2020-10-19 11:00:06.000000",
-        "dt": "Employee",
-        "insert_after": "column_break_250",
-        "fieldname": "n_e_h",
-        "fieldtype": "Int",
-        "label": "Nombre d'enfants infirmes"
-    },
-    {
-        "creation": "2020-10-19 11:00:05.000000",
-        "modified": "2020-10-19 11:00:06.000000",
-        "dt": "Employee",
-        "insert_after": "n_e_h",
-        "fieldname": "n_p_c",
-        "fieldtype": "Int",
-        "label": "Nombre de parents en charge"
+      "label": "Interet emprunt habitation"
     },
     {
       "creation": "2020-10-19 11:00:05.000000",
       "modified": "2020-10-19 11:00:06.000000",
       "dt": "Employee",
-      "insert_after": "column_break_250",
-      "fieldname": "epargne_banque",
+      "insert_after": "habitation",
+      "fieldname": "autre",
       "fieldtype": "Currency",
-      "label": "Interet compte epargne banque"
+      "label": "Autres"
+    },
+    {
+        "creation": "2020-10-19 11:00:05.000000",
+        "modified": "2020-10-19 11:00:06.000000",
+        "dt": "Employee",
+        "insert_after": "autre",
+        "fieldname": "column_break_252",
+        "fieldtype": "Column Break"
     }
+
 
    ],
    "custom_perms": [],
