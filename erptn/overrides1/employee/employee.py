@@ -26,6 +26,6 @@ class CustomEmployee(Employee):
 		if (self.Emprunt_obligatoire>obligatoire):
 			self.interet_emprunt_obligatoire_considearation=obligatoire
 		else:
-			self.interet_emprunt_obligatoire_considearation=self.Emprunt_obligatoire
+			self.interet_emprunt_obligatoire_considearation=self.interet_obligatoire
 
 
