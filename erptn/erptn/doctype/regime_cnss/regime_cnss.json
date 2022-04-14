@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:nom_reg",
+ "creation": "2022-04-12 13:55:22.596531",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "nom_reg",
+  "num_cnss",
+  "code_exploit",
+  "cnss_employe",
+  "cnss_patron",
+  "acc_travail",
+  "tfp",
+  "foprolos",
+  "smig",
+  "plaf"
+ ],
+ "fields": [
+  {
+   "fieldname": "nom_reg",
+   "fieldtype": "Data",
+   "label": "Nom du r\u00e9gime",
+   "unique": 1
+  },
+  {
+   "fieldname": "num_cnss",
+   "fieldtype": "Data",
+   "label": "NUM CNSS"
+  },
+  {
+   "fieldname": "code_exploit",
+   "fieldtype": "Data",
+   "label": "Code d'exploitation"
+  },
+  {
+   "fieldname": "cnss_employe",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Taux CNSS employ\u00e9 %",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cnss_patron",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Contribution patronale CNSS %",
+   "reqd": 1
+  },
+  {
+   "fieldname": "acc_travail",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "taux accident de travail %",
+   "reqd": 1
+  },
+  {
+   "default": "2",
+   "fieldname": "tfp",
+   "fieldtype": "Percent",
+   "label": "Taxe \u00e0 la Formation Professionnelle tfp %"
+  },
+  {
+   "default": "1",
+   "fieldname": "foprolos",
+   "fieldtype": "Percent",
+   "label": "Cr\u00e9dit de Fonds de Promotion des Logements Sociaux foprolos %"
+  },
+  {
+   "fieldname": "smig",
+   "fieldtype": "Currency",
+   "label": "SMIG"
+  },
+  {
+   "fieldname": "plaf",
+   "fieldtype": "Currency",
+   "label": "Plafond"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-04-12 14:03:50.352241",
+ "modified_by": "Administrator",
+ "module": "erptn",
+ "name": "Regime CNSS",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

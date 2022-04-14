@@ -1,0 +1,69 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:nom_contr",
+ "creation": "2022-04-12 14:47:27.602238",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "nom_contr",
+  "imposable",
+  "cotisable",
+  "select_cnss"
+ ],
+ "fields": [
+  {
+   "fieldname": "nom_contr",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nom du contrat",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "imposable",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Imposable"
+  },
+  {
+   "depends_on": "cotisable",
+   "fieldname": "select_cnss",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Selection du r\u00e9gime CNSS",
+   "options": "Regime CNSS"
+  },
+  {
+   "default": "0",
+   "fieldname": "cotisable",
+   "fieldtype": "Check",
+   "label": "Cotisatible"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-04-12 15:05:56.173303",
+ "modified_by": "Administrator",
+ "module": "erptn",
+ "name": "Type de contrat",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
