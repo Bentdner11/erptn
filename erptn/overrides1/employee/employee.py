@@ -23,7 +23,7 @@ class CustomEmployee(Employee):
 			self.interet_compte_epargne_poste_consideration=poste
 		else:
 			self.interet_compte_epargne_poste_consideration=self.epargne_poste
-		if (self.Emprunt_obligatoire>obligatoire):
+		if (self.interet_obligatoire>obligatoire):
 			self.interet_emprunt_obligatoire_considearation=obligatoire
 		else:
 			self.interet_emprunt_obligatoire_considearation=self.interet_obligatoire
