@@ -69,7 +69,7 @@ class CustomSalarySlip(SalarySlip):
 
 
 
-		bank,post,obliga,habit,aut=frappe.db.get_value('Employee',self.employee,['interet_compte_epargne_banque_consideration','interet_compte_epargne_poste_consideration','interet_emprunt_obligatoire_considearation','habitation','autre'])
+		bank,post,obliga,habit,aut=frappe.db.get_value('Employee',self.employee,['consideration_b','consideration_p','interet_emprunt_obligatoire_considearation','habitation','autre'])
 		deduction += float(bank) + float(post) +float(obliga) + aut + habit		#la suite des autres deduction
 		print("les deduction"+str(deduction))
 		self.les_deductions=deduction

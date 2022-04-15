@@ -16,16 +16,16 @@ class CustomEmployee(Employee):
 		if (self.n_p_c > parent):
 			frappe.throw(_("Veuillez resaisir le bon nombre des parents pris en charge"))
 		if (self.epargne_banque>banque):
-			self.interet_compte_epargne_banque_consideration=banque
+			self.consideration_b=banque
 		else:
-			self.interet_compte_epargne_banque_consideration=self.epargne_banque
+			self.consideration_b=self.epargne_banque
 		if (self.epargne_poste>poste):
-			self.interet_compte_epargne_poste_consideration=poste
+			self.consideration_p=poste
 		else:
-			self.interet_compte_epargne_poste_consideration=self.epargne_poste
-		if (self.interet_obligatoire>obligatoire):
+			self.consideration_p=self.epargne_poste
+		if (self.interetobligatoir>obligatoire):
 			self.interet_emprunt_obligatoire_considearation=obligatoire
 		else:
-			self.interet_emprunt_obligatoire_considearation=self.interet_obligatoire
+			self.interet_emprunt_obligatoire_considearation=self.interetobligatoir
 
 

@@ -58,7 +58,7 @@
   "deduct_enfant1": 100.0,
   "deduct_enfant2": 100.0,
   "deduct_enfant3": 100.0,
-  "deduct_enfant4": "100",
+  "deduct_enfant4": "100.000000000",
   "deduct_infirm": 2000.0,
   "deduct_non_bour": 1000.0,
   "docstatus": 0,

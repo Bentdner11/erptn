@@ -105,7 +105,7 @@
   {
    "fieldname": "pourc_css",
    "fieldtype": "Percent",
-   "label": "Pourcentage de contribution sociale de solidarit\u00e9"
+   "label": "% de contribution sociale de solidarit\u00e9"
   },
   {
    "fieldname": "deduct_enfant1",
@@ -124,13 +124,13 @@
   },
   {
    "fieldname": "deduct_enfant4",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Montant deduction 4eme enfant pris-en charge"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-04-04 11:35:29.710061",
+ "modified": "2022-04-15 09:33:14.626798",
  "modified_by": "Administrator",
  "module": "erptn",
  "name": "taxes et cotisation",
