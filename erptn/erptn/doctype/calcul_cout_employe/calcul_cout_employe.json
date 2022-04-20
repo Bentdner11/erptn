@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Calcul coup employ\u00e9.#####",
+ "creation": "2022-04-15 14:29:26.378544",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "select_employee",
+  "select_slip",
+  "retenue_cnss",
+  "retenue_patronale",
+  "accident_travail",
+  "retenue_tfp",
+  "retenue_foprolos",
+  "total_cotisation"
+ ],
+ "fields": [
+  {
+   "fieldname": "select_employee",
+   "fieldtype": "Link",
+   "label": "Select Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "select_slip",
+   "fieldtype": "Link",
+   "label": "Select salary slip",
+   "options": "Salary Slip"
+  },
+  {
+   "fieldname": "retenue_cnss",
+   "fieldtype": "Currency",
+   "label": "Retenue cnss",
+   "precision": "3"
+  },
+  {
+   "fieldname": "retenue_patronale",
+   "fieldtype": "Currency",
+   "label": "Retenue patronale",
+   "precision": "3"
+  },
+  {
+   "fieldname": "accident_travail",
+   "fieldtype": "Currency",
+   "label": "Retenue accident travail",
+   "precision": "3"
+  },
+  {
+   "fieldname": "retenue_tfp",
+   "fieldtype": "Currency",
+   "label": "Retenue tfp",
+   "precision": "3"
+  },
+  {
+   "fieldname": "retenue_foprolos",
+   "fieldtype": "Currency",
+   "label": "Retenue foprolos",
+   "precision": "3"
+  },
+  {
+   "fieldname": "total_cotisation",
+   "fieldtype": "Currency",
+   "label": "Total cotisation",
+   "precision": "3"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-04-15 14:33:22.298029",
+ "modified_by": "Administrator",
+ "module": "erptn",
+ "name": "Calcul cout employe",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

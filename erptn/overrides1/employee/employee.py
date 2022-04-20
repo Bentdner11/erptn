@@ -27,5 +27,7 @@ class CustomEmployee(Employee):
 			self.interet_emprunt_obligatoire_considearation=obligatoire
 		else:
 			self.interet_emprunt_obligatoire_considearation=self.interetobligatoir
+		regime=frappe.db.get_value('Type de contrat',self.contract_type,['select_cnss'])
+		self.regime_cnss=regime
 
 

@@ -21,8 +21,9 @@ class CustomSalarySlip(SalarySlip):
 
 	def calculate_net_pay(self):
 		super(CustomSalarySlip,self).calculate_net_pay()
-		cnss,cot_pro,parent,pour_parent,plaf_parent,plaf_pro=frappe.db.get_value('taxes et cotisation',self.taxes_et_cotisations,['pourc_cnss','pourc_pro','max_parents','pourcent_parent','plafond_parent','plafond_pro'])
+		cnss,cot_pro,parent,pour_parent,plaf_parent,plaf_pro=frappe.db.get_value('taxes et cotisation',self.loi_de_finance,['pourc_cnss','pourc_pro','max_parents','pourcent_parent','plafond_parent','plafond_pro'])
 		cot_cnss=self.gross_pay*cnss*0.01
+		#num_months=
 		self.social_salary=(self.gross_pay - cot_cnss)*12	#salaire annuel social
 		parents=frappe.db.get_value('Employee',self.employee,['n_p_c'])
 
@@ -48,7 +49,7 @@ class CustomSalarySlip(SalarySlip):
 		print(cot_pro)
 
 
-		deduction_chef,enfant1,enfant2,enfant3,enfant4,infirme,nonbour=frappe.db.get_value('taxes et cotisation',self.taxes_et_cotisations,['deduct_chef','deduct_enfant1','deduct_enfant2','deduct_enfant3','deduct_enfant4','deduct_infirm','deduct_non_bour'])
+		deduction_chef,enfant1,enfant2,enfant3,enfant4,infirme,nonbour=frappe.db.get_value('taxes et cotisation',self.loi_de_finance,['deduct_chef','deduct_enfant1','deduct_enfant2','deduct_enfant3','deduct_enfant4','deduct_infirm','deduct_non_bour'])
 		chef,nb_enfant,nb_infirme,nb_nonbour=frappe.db.get_value('Employee',self.employee,['c_d_f','n_e_c','n_e_h','n_e_b'])
 		total_deduct_chef=0
 		deduct_enfant=0
@@ -79,7 +80,7 @@ class CustomSalarySlip(SalarySlip):
 		self.tax_salary =self.social_salary - deduction				#salaire annuel imposable
 
 
-		css=frappe.db.get_value('taxes et cotisation',self.taxes_et_cotisations,['pourc_css'])
+		css=frappe.db.get_value('taxes et cotisation',self.loi_de_finance,['pourc_css'])
 		deduct_css=self.tax_salary*css*0.01/12				#calcul css
 		print("css:"+str(deduct_css))
 
