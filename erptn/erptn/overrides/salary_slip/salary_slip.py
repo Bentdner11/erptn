@@ -21,10 +21,49 @@ class CustomSalarySlip(SalarySlip):
 
 	def calculate_net_pay(self):
 		super(CustomSalarySlip,self).calculate_net_pay()
-		cnss,cot_pro,parent,pour_parent,plaf_parent,plaf_pro=frappe.db.get_value('taxes et cotisation',self.loi_de_finance,['pourc_cnss','pourc_pro','max_parents','pourcent_parent','plafond_parent','plafond_pro'])
+ #import de type de contrat et la situation du contrat ( impos et cotis )
+		contrat=frappe.db.get_value('Employee',self.employee,['contract_type'])
+		print("ici cest le contrat"+str(contrat))
+		state_cotis, state_impos = frappe.db.get_value('Type de contrat',contrat,['cotisable','imposable'])
+		print("ici si cest cotisable"+str(state_cotis))
+		print("ici si cest imposable"+str(state_impos))
+
+#calcul cnss si le contrat et cotisable et import de sa valeur
+		if (state_cotis):
+			type_cnss=frappe.db.get_value('Type de contrat',contrat,['select_cnss'])
+			cnss=frappe.db.get_value('Regime CNSS',type_cnss,['cnss_employe'])
+		else:
+			cnss=0
+			type_cnss="non cotisable"
+		print("valeur de taux cnss "+str(cnss))
+		print("type de cnss"+str(type_cnss))
+
+#traitement de cas ou le salaire du regime dignité dépasse le plafond
+		if (type_cnss=="Régime dignité"):
+			salaire_plafond=frappe.db.get_value('Regime CNSS',type_cnss,['plaf'])
+			print("le plafond"+str(salaire_plafond))
+			if (self.gross_pay>salaire_plafond):
+				self.gross_pay=self.gross_pay-salaire_plafond
+				print("le salaire condideree si on depeasse le plafond"+str(self.gross_pay))
+				contrat="Permanent"
+				type_cnss=frappe.db.get_value('Type de contrat',contrat,['select_cnss'])
+				cnss=frappe.db.get_value('Regime CNSS',type_cnss,['cnss_employe'])
+				state_impos=1
+				state_cotis=1
+
+
+
+
+
+#import de nombre de mois travaileees
+
+		cot_pro,parent,pour_parent,plaf_parent,plaf_pro=frappe.db.get_value('taxes et cotisation',self.loi_de_finance,['pourc_pro','max_parents','pourcent_parent','plafond_parent','plafond_pro'])
 		cot_cnss=self.gross_pay*cnss*0.01
-		#num_months=
-		self.social_salary=(self.gross_pay - cot_cnss)*12	#salaire annuel social
+		num_months=frappe.db.get_value('Employee',self.employee,['working_months'])
+		print("mois travailleees"+str(num_months))
+#salaire annuel social
+
+		self.social_salary=(self.gross_pay - cot_cnss)*num_months
 		parents=frappe.db.get_value('Employee',self.employee,['n_p_c'])
 
 
@@ -80,22 +119,25 @@ class CustomSalarySlip(SalarySlip):
 		self.tax_salary =self.social_salary - deduction				#salaire annuel imposable
 
 
-		css=frappe.db.get_value('taxes et cotisation',self.loi_de_finance,['pourc_css'])
-		deduct_css=self.tax_salary*css*0.01/12				#calcul css
-		print("css:"+str(deduct_css))
 
+#condition si il est imposable irpp + css
 
+		if (state_impos):
 
+			tax_slab = self.get_custom_tax()
+			tax = 0
+			irpp_tax=self.custom_calculate_tax_by_tax_slab(self.tax_salary,tax_slab)
+			print(irpp_tax)
+			irpp=irpp_tax/num_months
+			#calcul css
+			css=frappe.db.get_value('taxes et cotisation',self.loi_de_finance,['pourc_css'])
+			deduct_css=self.tax_salary*css*0.01/num_months
+			print("css:"+str(deduct_css))
 
-#		we need to fix code bellow taken snippets from payroll
-		#tax_slab = frappe.db.get_value("Salary Structure Assignment",
-		#	{"employee": self.employee, "salary_structure": self.salary_structure, "docstatus": 1}, ["income_tax_slab"]) # this is importing income tax slab from the proper doctype
-		tax_slab = self.get_custom_tax()
-		tax = 0
-#		print(tax_slab.slabs)
-		irpp_tax=self.custom_calculate_tax_by_tax_slab(self.tax_salary,tax_slab)
-		print(irpp_tax)
-		irpp=irpp_tax/12
+		else:
+			irpp=0
+			css=0
+		print("la mensuelle de irpp"+str(irpp))
 #		for slab in tax_slab.slabs:                             #calcul irpp en utilisant le salaire imposable en utilsant le tableau de irpp
 #			while (self.tax_salary >=0):
 #				if (self.tax_salary > slab.from_amount and self.tax_salary < slab.to_amount):
@@ -103,9 +145,9 @@ class CustomSalarySlip(SalarySlip):
 #				if (self.tax_salary>slab.to_amount):
 #					tax +=(slab.to_amount - slab.from_amount)* slab.percent_deduction*0.01
 #					self.tax_salary=self.tax_salary - slab.to_amount
-#		irpp=tax/12
+#		irpp=tax/num_months
 # calcul de net pay
-		self.net_pay=(self.social_salary/12)-irpp-deduct_css
+		self.net_pay=(self.social_salary/num_months)-irpp-deduct_css
 		self.valeur_irpp=irpp
 		self.valeur_css=deduct_css
 		self.cotisation_sociale=cot_cnss
@@ -189,10 +231,10 @@ class CustomSalarySlip(SalarySlip):
 #	def get_emp_and_working_day_details(self):
 #		a= super(CustomSalarySlip,self).get_emp_and_working_day_details()
 #		cnss=self.get_cnss()
-#		self.social_salary = (self.gross_pay - cnss)*12
+#		self.social_salary = (self.gross_pay - cnss)*num_months
 #		print(self.social_salary)
 		#a= super(CustomSalarySlip,self).get_emp_and_working_day_details()
-#		print("hello from override"*12)
+#		print("hello from override"*num_months)
 #		return a
 #	def get_cnss(self):
 #		pass

@@ -1,4 +1,7 @@
 frappe.ui.form.on('Employee', {
+    setup: function(frm){
+		add_fetch("company", "working_months_in_the_company", "working_months");
+	},
     validate: function(frm){
         var regex = /[^0-9]/g;
 	var sum = 0;
