@@ -19,8 +19,27 @@ class CustomSalarySlip(SalarySlip):
 #	def __init__(self, *args, **kwargs):
 #		super().__init__(*args, **kwargs)
 
+	#if (self.prime_exp):
+	#	self.gross_pay+=self.valeur_de_prime
+#importation de nombre de jours travaillee (regime 26 et 22 jours sinon calcul normal de erpnext)
+	#regime_jour=frappe.db.get_value('Company',self.company,['default_holiday_list'])
+	#if (regime_jour=='Régime 22 jours'):
+	#	self.total_working_days=22
+	#if (regime_jour=='Régime 26 Jours'):
+	#	self.total_working_days=26
+
+
 	def calculate_net_pay(self):
 		super(CustomSalarySlip,self).calculate_net_pay()
+		if (self.prime_exp):
+			self.gross_pay+=self.valeur_de_prime
+#importation de nombre de jours travaillee (regime 26 et 22 jours sinon calcul normal de erpnext)
+		regime_jour=frappe.db.get_value('Company',self.company,['default_holiday_list'])
+		if (regime_jour=='Régime 22 jours'):
+			self.total_working_days=22
+		if (regime_jour=='Régime 26 Jours'):
+			self.total_working_days=26
+
  #import de type de contrat et la situation du contrat ( impos et cotis )
 		contrat=frappe.db.get_value('Employee',self.employee,['contract_type'])
 		print("ici cest le contrat"+str(contrat))
