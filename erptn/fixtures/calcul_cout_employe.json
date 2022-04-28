@@ -1,0 +1,53 @@
+[
+ {
+  "accident_travail": 0.0,
+  "docstatus": 0,
+  "doctype": "Calcul cout employe",
+  "modified": "2022-04-20 09:05:23.946335",
+  "name": "Calcul coup employ\u00e900001",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "retenue_cnss": 0.0,
+  "retenue_foprolos": 0.0,
+  "retenue_patronale": 0.0,
+  "retenue_tfp": 0.0,
+  "select_employee": "HR-EMP-00022",
+  "select_slip": "Sal Slip/HR-EMP-00022/00001",
+  "total_cotisation": 0.0
+ },
+ {
+  "accident_travail": 0.0,
+  "docstatus": 0,
+  "doctype": "Calcul cout employe",
+  "modified": "2022-04-20 10:17:22.406102",
+  "name": "Calcul coup employ\u00e900002",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "retenue_cnss": 0.0,
+  "retenue_foprolos": 0.0,
+  "retenue_patronale": 0.0,
+  "retenue_tfp": 0.0,
+  "select_employee": "HR-EMP-00022",
+  "select_slip": "Sal Slip/HR-EMP-00022/00001",
+  "total_cotisation": 294.3
+ },
+ {
+  "accident_travail": 0.0,
+  "docstatus": 0,
+  "doctype": "Calcul cout employe",
+  "modified": "2022-04-20 10:52:30.556912",
+  "name": "Calcul coup employ\u00e900003",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "retenue_cnss": 0.0,
+  "retenue_foprolos": 0.0,
+  "retenue_patronale": 0.0,
+  "retenue_tfp": 0.0,
+  "select_employee": "HR-EMP-00022",
+  "select_slip": "Sal Slip/HR-EMP-00022/00001",
+  "total_cotisation": 0.0
+ }
+]

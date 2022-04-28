@@ -19,16 +19,6 @@ class CustomSalarySlip(SalarySlip):
 #	def __init__(self, *args, **kwargs):
 #		super().__init__(*args, **kwargs)
 
-	#if (self.prime_exp):
-	#	self.gross_pay+=self.valeur_de_prime
-#importation de nombre de jours travaillee (regime 26 et 22 jours sinon calcul normal de erpnext)
-	#regime_jour=frappe.db.get_value('Company',self.company,['default_holiday_list'])
-	#if (regime_jour=='Régime 22 jours'):
-	#	self.total_working_days=22
-	#if (regime_jour=='Régime 26 Jours'):
-	#	self.total_working_days=26
-
-
 	def calculate_net_pay(self):
 		super(CustomSalarySlip,self).calculate_net_pay()
 		if (self.prime_exp):
@@ -99,10 +89,11 @@ class CustomSalarySlip(SalarySlip):
 		total_parent=parents*frais_parent
 		print("frais des parents "+str(total_parent))
 
+#la deduction contient seulement la deduction des frais pro et celle des parents pris en charge
 
 
 		deduction=0
-		deduction +=frais_cot_pro+total_parent 		#la deduction contient seulement la deduction des frais pro et celle des parents pris en charge
+		deduction +=frais_cot_pro+total_parent
 		print("deduction pro"+str(deduction))
 		print(cot_pro)
 
@@ -111,6 +102,12 @@ class CustomSalarySlip(SalarySlip):
 		chef,nb_enfant,nb_infirme,nb_nonbour=frappe.db.get_value('Employee',self.employee,['c_d_f','n_e_c','n_e_h','n_e_b'])
 		total_deduct_chef=0
 		deduct_enfant=0
+
+
+#consideration du cas chef famille ou non + calculs necessaire
+
+
+
 		if (chef=="Oui"):
 			if (nb_enfant==4):
 				deduct_enfant += enfant1 + enfant2 + enfant3 + float(enfant4)
@@ -120,7 +117,7 @@ class CustomSalarySlip(SalarySlip):
 				deduct_enfant += enfant1 + enfant2
 			if (nb_enfant==1):
 				deduct_enfant += enfant1
-			total_deduct_chef += deduction_chef + deduct_enfant + nb_infirme*infirme + nb_nonbour*nonbour		#consideration du cas chef famille ou non + calculs necessaire
+			total_deduct_chef += deduction_chef + deduct_enfant + nb_infirme*infirme + nb_nonbour*nonbour
 		else :
 			total_deduct_chef = 0
 		deduction += total_deduct_chef
@@ -134,8 +131,8 @@ class CustomSalarySlip(SalarySlip):
 		self.les_deductions=deduction
 
 
-
-		self.tax_salary =self.social_salary - deduction				#salaire annuel imposable
+#salaire annuel imposable
+		self.tax_salary =self.social_salary - deduction
 
 
 
