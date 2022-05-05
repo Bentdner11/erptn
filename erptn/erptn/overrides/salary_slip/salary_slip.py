@@ -14,6 +14,10 @@ from frappe.utils import (
 	rounded,
 )
 from erpnext.utilities.transaction_base import TransactionBase
+from erpnext.loan_management.doctype.loan_repayment.loan_repayment import (
+	calculate_amounts,
+	create_repayment_entry,
+)
 from frappe.model.document import Document
 class CustomSalarySlip(SalarySlip):
 #	def __init__(self, *args, **kwargs):
@@ -21,7 +25,13 @@ class CustomSalarySlip(SalarySlip):
 
 	def calculate_net_pay(self):
 		super(CustomSalarySlip,self).calculate_net_pay()
+		deduction_plafond_dignite=0
+		pr_excep=0
 		if (self.prime_exp):
+#parcours du tableux de primes exceptionelle
+			for primes in self.table_primes_excep:
+				pr_excep += primes.valeur_child_allocation
+			self.valeur_de_prime=pr_excep
 			self.gross_pay+=self.valeur_de_prime
 #importation de nombre de jours travaillee (regime 26 et 22 jours sinon calcul normal de erpnext)
 		regime_jour=frappe.db.get_value('Company',self.company,['default_holiday_list'])
@@ -52,8 +62,7 @@ class CustomSalarySlip(SalarySlip):
 			salaire_plafond=frappe.db.get_value('Regime CNSS',type_cnss,['plaf'])
 			print("le plafond"+str(salaire_plafond))
 			if (self.gross_pay>salaire_plafond):
-				self.gross_pay=self.gross_pay-salaire_plafond
-				print("le salaire condideree si on depeasse le plafond"+str(self.gross_pay))
+				deduction_plafond_dignite=salaire_plafond
 				contrat="Permanent"
 				type_cnss=frappe.db.get_value('Type de contrat',contrat,['select_cnss'])
 				cnss=frappe.db.get_value('Regime CNSS',type_cnss,['cnss_employe'])
@@ -67,23 +76,26 @@ class CustomSalarySlip(SalarySlip):
 #import de nombre de mois travaileees
 
 		cot_pro,parent,pour_parent,plaf_parent,plaf_pro=frappe.db.get_value('taxes et cotisation',self.loi_de_finance,['pourc_pro','max_parents','pourcent_parent','plafond_parent','plafond_pro'])
-		cot_cnss=self.gross_pay*cnss*0.01
+		cot_cnss=(self.gross_pay - deduction_plafond_dignite )*cnss*0.01
 		num_months=frappe.db.get_value('Employee',self.employee,['working_months'])
 		print("mois travailleees"+str(num_months))
 #salaire annuel social
 
-		self.social_salary=(self.gross_pay - cot_cnss)*num_months
+		self.social_salary=(self.gross_pay - cot_cnss - deduction_plafond_dignite )*num_months
 		parents=frappe.db.get_value('Employee',self.employee,['n_p_c'])
 
 
 
-
-		frais_cot_pro=self.social_salary*cot_pro*0.01	#calcul frais cotisation pro a partir du salaire annuel social
+ #calcul frais cotisation pro a partir du salaire annuel social
+		frais_cot_pro=self.social_salary*cot_pro*0.01
 		if (frais_cot_pro>plaf_pro):
 			frais_cot_pro=plaf_pro
 
 
-		frais_parent=self.social_salary*pour_parent*0.01	#calcul frais parent a partir du salaire annuel social
+
+#calcul frais parent a partir du salaire annuel social
+
+		frais_parent=self.social_salary*pour_parent*0.01
 		if (frais_parent>plaf_parent):
 			frais_parent=plaf_parent
 		total_parent=parents*frais_parent
@@ -124,15 +136,20 @@ class CustomSalarySlip(SalarySlip):
 
 
 
+#la suite des autres deduction
 
 		bank,post,obliga,habit,aut=frappe.db.get_value('Employee',self.employee,['consideration_b','consideration_p','interet_emprunt_obligatoire_considearation','habitation','autre'])
-		deduction += float(bank) + float(post) +float(obliga) + aut + habit		#la suite des autres deduction
+		deduction += float(bank) + float(post) +float(obliga) + aut + habit
 		print("les deduction"+str(deduction))
 		self.les_deductions=deduction
 
 
 #salaire annuel imposable
 		self.tax_salary =self.social_salary - deduction
+#rounding annual net taxable salary ( adding the select option later ) 
+		arrondie = round(self.tax_salary)
+		print("le salaire arrondie est "+str(arrondie))
+		self.tax_salary=arrondie
 
 
 
@@ -146,13 +163,17 @@ class CustomSalarySlip(SalarySlip):
 			print(irpp_tax)
 			irpp=irpp_tax/num_months
 			#calcul css
-			css=frappe.db.get_value('taxes et cotisation',self.loi_de_finance,['pourc_css'])
-			deduct_css=self.tax_salary*css*0.01/num_months
-			print("css:"+str(deduct_css))
+			if (self.tax_salary < 5000 ):
+				deduct_css=0
+			else :
+				css=frappe.db.get_value('taxes et cotisation',self.loi_de_finance,['pourc_css'])
+				deduct_css=self.tax_salary*css*0.01/num_months
+				print("css:"+str(deduct_css))
 
 		else:
 			irpp=0
-			css=0
+			deduct_css=0
+
 		print("la mensuelle de irpp"+str(irpp))
 #		for slab in tax_slab.slabs:                             #calcul irpp en utilisant le salaire imposable en utilsant le tableau de irpp
 #			while (self.tax_salary >=0):
@@ -162,11 +183,50 @@ class CustomSalarySlip(SalarySlip):
 #					tax +=(slab.to_amount - slab.from_amount)* slab.percent_deduction*0.01
 #					self.tax_salary=self.tax_salary - slab.to_amount
 #		irpp=tax/num_months
-# calcul de net pay
-		self.net_pay=(self.social_salary/num_months)-irpp-deduct_css
+
+
+# calcul de net pay, net a payer net a payer arrondi 
+		self.set_loan_repayment()
+		self.salaire_net=(self.social_salary/num_months)-irpp-deduct_css
+		self.net_pay=self.salaire_net - flt(self.total_loan_repayment)
+		print("le rembourssement du pret est" + str(self.total_loan_repayment))
 		self.valeur_irpp=irpp
 		self.valeur_css=deduct_css
 		self.cotisation_sociale=cot_cnss
+#net a payer arrondi
+		if (self.rounding_type=="valeur entiere"):
+			self.rounded_total=round(self.net_pay,0)
+		if (self.rounding_type=="au dixieme"):
+			self.rounded_total=round(self.net_pay,1)
+		if (self.rounding_type=="au centieme"):
+			self.rounded_total=round(self.net_pay,2)
+		if (self.rounding_type=="au millieme"):
+			self.rounded_total=round(self.net_pay,3)
+
+
+
+# calcul cout employee
+		if (state_cotis==1):
+			cnss,patron,accident,tauxfp,tauxfoprolos=frappe.db.get_value('Regime CNSS',type_cnss,['cnss_employe','cnss_patron','acc_travail','tfp','foprolos'])
+			self.retenue_cnss=(self.gross_pay - deduction_plafond_dignite)*cnss*0.01
+			self.retenue_patronale=(self.gross_pay - deduction_plafond_dignite)*patron*0.01
+			self.retenue_accident_travail=(self.gross_pay - deduction_plafond_dignite)*accident*0.01
+			self.retenue_tfp=(self.gross_pay - deduction_plafond_dignite)*tauxfp*0.01
+			self.retenue_foprolos=(self.gross_pay - deduction_plafond_dignite)*tauxfoprolos*0.01
+			if (contrat=="SIAP" or contrat=="Le Contrat d'Initiation à la Vie Professionnelle CIVP"):
+				self.retenue_foprolos=0
+				self.retenue_tfp=0
+		else :
+			self.retenue_foprolos=0
+			self.retenue_tfp=0
+			self.retenue_accident_travail=0
+			self.retenue_patronale=0
+			self.retenue_cnss=0
+		self.total_cotisation= self.retenue_foprolos + self.retenue_tfp + self.retenue_accident_travail + self.retenue_patronale + self.retenue_cnss
+
+
+
+#tax slab irpp
 	def get_custom_tax(self):
 		income_tax_slab, ss_assignment_name = frappe.db.get_value("Salary Structure Assignment",
 			{"employee": self.employee, "salary_structure": self.salary_structure, "docstatus": 1}, ["income_tax_slab", 'name'])
@@ -206,6 +266,41 @@ class CustomSalarySlip(SalarySlip):
 
 
 		return tax_amount
+
+
+#calcul de rembourssement de pret 
+	def set_loan_repayment(self):
+		self.total_loan_repayment = 0
+		self.total_interest_amount = 0
+		self.total_principal_amount = 0
+
+		if not self.get('loans'):
+			for loan in self.get_loan_details():
+
+				amounts = calculate_amounts(loan.name, self.posting_date, "Regular Payment")
+
+				if amounts['interest_amount'] or amounts['payable_principal_amount']:
+					self.append('loans', {
+						'loan': loan.name,
+						'total_payment': amounts['interest_amount'] + amounts['payable_principal_amount'],
+						'interest_amount': amounts['interest_amount'],
+						'principal_amount': amounts['payable_principal_amount'],
+						'loan_account': loan.loan_account,
+						'interest_income_account': loan.interest_income_account
+					})
+
+		for payment in self.get('loans'):
+			amounts = calculate_amounts(payment.loan, self.posting_date, "Regular Payment")
+			total_amount = amounts['interest_amount'] + amounts['payable_principal_amount']
+			if payment.total_payment > total_amount:
+				frappe.throw(_("""Row {0}: Paid amount {1} is greater than pending accrued amount {2} against loan {3}""")
+					.format(payment.idx, frappe.bold(payment.total_payment),
+						frappe.bold(total_amount), frappe.bold(payment.loan)))
+
+			self.total_interest_amount += payment.interest_amount
+			self.total_principal_amount += payment.principal_amount
+
+			self.total_loan_repayment += payment.total_payment
 
 
 

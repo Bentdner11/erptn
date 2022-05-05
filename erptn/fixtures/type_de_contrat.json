@@ -102,5 +102,18 @@
   "parentfield": null,
   "parenttype": null,
   "select_cnss": null
+ },
+ {
+  "cotisable": 0,
+  "docstatus": 0,
+  "doctype": "Type de contrat",
+  "imposable": 0,
+  "modified": "2022-04-28 12:34:35.380430",
+  "name": "SIAP",
+  "nom_contr": "SIAP",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "select_cnss": null
  }
 ]

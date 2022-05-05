@@ -1,14 +1,53 @@
-/*frappe.ui.form.on('Salary Slip', {
-	employee:function(frm) {
-		var parent = 0 ;
-		var cot_pro = 0 ;
-		var deduct=0 ;
-		var npc=0 ;
-		var css = 0 ;
-		var tax = 0 ;
-		var irpp = 0 ;
-//		frm.doc.tax_salary = 0 ;
-//		frm.doc.tot_deduct = 0 ;
+frappe.ui.form.on('Salary Slip', {
+	rounding_type : function(frm){
+		frm.refresh_field("rounded_total");}
+	table_primes_excep : function(frm){
+		frm.refresh_field("valeur_de_prime");}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+
+/*	employee:function(frm) {
+		frm.doc.tax_salary = 0 ;
+		frm.doc.tot_deduct = 0 ;
 		frappe.call({
                 method: "frappe.client.get",
 		async:false,
@@ -28,7 +67,7 @@
                });
 	       frm.refresh_field("deduct_impot");
 	       frm.refresh_field("n_p_c");
-	           // console.log(frm.doc.deductions);
+	           console.log(frm.doc.deductions);
 	for(var i=0;i<cur_frm.doc.deductions.length;i++){
 	    if (frm.doc.deductions[i].abbr == "CS" || frm.doc.deductions[i].abbr == "cnss"){
 
@@ -69,5 +108,4 @@
 	frm.doc.net_salary=((frm.doc.social_salary/12)-irpp-css);
 
     	}
-
- })*/
+*/

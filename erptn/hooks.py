@@ -44,7 +44,7 @@ override_doctype_class = {
 
 # Home Pages
 # ----------
-fixtures = ["Custom Field",{"dt":"Income Tax Slab"},{"dt":"taxes et cotisation"},{"dt":"Calcul cout employe"},{"dt":"Type de contrat"},{"dt":"Regime CNSS"}]
+fixtures = ["Custom Field",{"dt":"Income Tax Slab"},{"dt":"taxes et cotisation"},{"dt":"Calcul cout employe"},{"dt":"Type de contrat"},{"dt":"Regime CNSS"},{"dt":"Holiday List"},{"dt":"Company"},{"dt":"Company"},{"dt":"Employee"},{"dt":"Salary Component"},{"dt":"Salary Structure"},{"dt":"Salary Structure Assignment"},{"dt":"Salary Slip"}]
 # application home page (will override Website Settings)
 # home_page = "login"
 

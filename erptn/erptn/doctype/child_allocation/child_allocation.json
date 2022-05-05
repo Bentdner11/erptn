@@ -1,0 +1,35 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-05-05 12:08:30.018787",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "name_child_allocation",
+  "valeur_child_allocation"
+ ],
+ "fields": [
+  {
+   "fieldname": "name_child_allocation",
+   "fieldtype": "Data",
+   "label": "Nom"
+  },
+  {
+   "fieldname": "valeur_child_allocation",
+   "fieldtype": "Currency",
+   "label": "Valeur"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-05-05 12:08:30.018787",
+ "modified_by": "Administrator",
+ "module": "erptn",
+ "name": "Child Allocation",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
