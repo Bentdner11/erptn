@@ -43,7 +43,7 @@ from frappe.utils import (
 	rounded,
 )
 from frappe.utils.background_jobs import enqueue
-
+from frappe import _
 import erpnext
 from erpnext.accounts.utils import get_fiscal_year
 from erpnext.hr.utils import get_holiday_dates_for_employee, validate_active_employee
