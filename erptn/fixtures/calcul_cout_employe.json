@@ -49,5 +49,22 @@
   "select_employee": "HR-EMP-00022",
   "select_slip": "Sal Slip/HR-EMP-00022/00001",
   "total_cotisation": 0.0
+ },
+ {
+  "accident_travail": 14.39,
+  "docstatus": 0,
+  "doctype": "Calcul cout employe",
+  "modified": "2022-05-11 16:03:35.685447",
+  "name": "Calcul coup employ\u00e900004",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "retenue_cnss": 264.2004,
+  "retenue_foprolos": 28.78,
+  "retenue_patronale": 476.8846,
+  "retenue_tfp": 57.56,
+  "select_employee": "HR-EMP-00022",
+  "select_slip": "Sal Slip/HR-EMP-00022/00002",
+  "total_cotisation": 841.815
  }
 ]

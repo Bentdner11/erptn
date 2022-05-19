@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "Loi de finance #####",
  "creation": "2022-04-04 08:58:34.099758",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -130,7 +131,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-04-15 09:33:14.626798",
+ "modified": "2022-05-06 11:11:12.497288",
  "modified_by": "Administrator",
  "module": "erptn",
  "name": "taxes et cotisation",

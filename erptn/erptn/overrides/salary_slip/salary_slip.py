@@ -1,5 +1,5 @@
 from erpnext.payroll.doctype.salary_slip.salary_slip import SalarySlip
-
+from erpnext.accounts.custom.address import get_shipping_address
 import frappe
 from frappe.utils import (
 	add_days,
@@ -41,7 +41,7 @@ class CustomSalarySlip(SalarySlip):
 			self.total_working_days=26
 
  #import de type de contrat et la situation du contrat ( impos et cotis )
-		contrat=frappe.db.get_value('Employee',self.employee,['contract_type'])
+		contrat,salaire_base=frappe.db.get_value('Employee',self.employee,['contract_type','salaire_de_base'])
 		print("ici cest le contrat"+str(contrat))
 		state_cotis, state_impos = frappe.db.get_value('Type de contrat',contrat,['cotisable','imposable'])
 		print("ici si cest cotisable"+str(state_cotis))
@@ -193,6 +193,8 @@ class CustomSalarySlip(SalarySlip):
 		self.valeur_irpp=irpp
 		self.valeur_css=deduct_css
 		self.cotisation_sociale=cot_cnss
+		self.la_base=salaire_base
+		print("le salaire de base" + str(self.la_base))
 #net a payer arrondi
 		if (self.rounding_type=="valeur entiere"):
 			self.rounded_total=round(self.net_pay,0)
@@ -202,7 +204,10 @@ class CustomSalarySlip(SalarySlip):
 			self.rounded_total=round(self.net_pay,2)
 		if (self.rounding_type=="au millieme"):
 			self.rounded_total=round(self.net_pay,3)
-
+###### extraction de l'addresse de la societé dans un field html 
+		self.company_address="cmon why dont you just work :))"
+		self.testin=get_shipping_address("slnee","slnee-Office")[1]
+		print ("le nom de la societee je veux rendre la ligne longue pour la lis" + str( self.company_address))
 
 
 # calcul cout employee
