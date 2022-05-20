@@ -1,0 +1,46 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Child Allocation",
+  "modified": "2022-05-18 09:58:52.017146",
+  "name": "7bd812aaf0",
+  "name_child_allocation": "sdfsf",
+  "parent": "Sal Slip/HR-EMP-00022/00002",
+  "parentfield": "table_primes_excep",
+  "parenttype": "Salary Slip",
+  "valeur_child_allocation": 9893.0
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Child Allocation",
+  "modified": "2022-05-18 09:58:52.017146",
+  "name": "575c632f8d",
+  "name_child_allocation": "HGFDHJ",
+  "parent": "Sal Slip/HR-EMP-00022/00002",
+  "parentfield": "table_primes_excep",
+  "parenttype": "Salary Slip",
+  "valeur_child_allocation": 8374.0
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Child Allocation",
+  "modified": "2022-05-18 09:58:52.017146",
+  "name": "d1fcdbe37d",
+  "name_child_allocation": "DLHJLFDH",
+  "parent": "Sal Slip/HR-EMP-00022/00002",
+  "parentfield": "table_primes_excep",
+  "parenttype": "Salary Slip",
+  "valeur_child_allocation": 3989.0
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Child Allocation",
+  "modified": "2022-05-18 09:58:52.017146",
+  "name": "b1855df4dd",
+  "name_child_allocation": "KDJHF",
+  "parent": "Sal Slip/HR-EMP-00022/00002",
+  "parentfield": "table_primes_excep",
+  "parenttype": "Salary Slip",
+  "valeur_child_allocation": 290.0
+ }
+]
