@@ -113,7 +113,17 @@ fixtures = ["Custom Field",{"dt":"Income Tax Slab"},
 
 # Scheduled Tasks
 # ---------------
+scheduler_events= {
+	#"all" : ["erptn.biometric-attendance-sync-tool.erpnext_sync.main"],
+	"cron":{
+		"* * * * *":[
+                        "erptn.attendance.go"
+                ]
 
+
+	}
+
+}
 # scheduler_events = {
 # 	"all": [
 # 		"erptn.tasks.all"
