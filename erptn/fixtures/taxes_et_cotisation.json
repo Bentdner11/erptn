@@ -79,5 +79,32 @@
   "pourc_css": 1.0,
   "pourc_pro": 10.0,
   "pourcent_parent": 5.0
+ },
+ {
+  "deduct_chef": 0.0,
+  "deduct_enfant1": 0.0,
+  "deduct_enfant2": 0.0,
+  "deduct_enfant3": 0.0,
+  "deduct_enfant4": 0.0,
+  "deduct_infirm": 0.0,
+  "deduct_non_bour": 0.0,
+  "docstatus": 0,
+  "doctype": "taxes et cotisation",
+  "max_banque": 0.0,
+  "max_enfants": 0,
+  "max_obligatoire": 0.0,
+  "max_parents": 0,
+  "max_poste": 0.0,
+  "modified": "2022-05-20 12:55:18.838788",
+  "name": "COT00003",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "plafond_parent": 0.0,
+  "plafond_pro": 0.0,
+  "pourc_cnss": 0.0,
+  "pourc_css": 0.0,
+  "pourc_pro": 0.0,
+  "pourcent_parent": 0.0
  }
 ]

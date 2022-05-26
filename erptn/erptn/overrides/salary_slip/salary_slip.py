@@ -204,11 +204,6 @@ class CustomSalarySlip(SalarySlip):
 			self.rounded_total=round(self.net_pay,2)
 		if (self.rounding_type=="au millieme"):
 			self.rounded_total=round(self.net_pay,3)
-###### extraction de l'addresse de la societé dans un field html 
-		self.company_address="cmon why dont you just work :))"
-		self.testin=get_shipping_address("slnee","slnee-Office")[1]
-		print ("le nom de la societee je veux rendre la ligne longue pour la lis" + str( self.company_address))
-
 
 # calcul cout employee
 		if (state_cotis==1):
