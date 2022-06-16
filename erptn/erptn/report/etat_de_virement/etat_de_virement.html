@@ -1,0 +1,35 @@
+<h5 class="text-right">{%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}</h5>
+<h1 class="text-center">{%= __("ETAT DE VIREMENT")  %} </h1>
+<h2 class="text-center">{%= __("A l'attention de Monsieur le chef d'agence de la Banque X")  %} </h2>
+<style>h1{font-family: "Lucida Console", "Courier New", monospace; font-size: 30px; font-weight: bold;}h2{font-family: "Lucida Console", "Courier New", monospace; font-size: 14px; font-weight: bold;}h6{font-weight: bold }</style>
+<h4>{%= __("Objet: Demande de virements des salaires") %} </h4>
+<p>{%= __("Nous vous prions de bien vouloir par le débit de notre compte N ° 20014140001121381012") %} <br> {%= __("effectuer les virements suivants :") %}</p>
+<p>{%= __("Effectué le : ")  %}</p> 
+<p>{%= filters.posting_date %}</p>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th style="width: 20%">{%= __("Code") %}</th>
+			<th style="width: 20%">{%= __("Nom et Prenom") %}</th>
+			<th style="width: 20%">{%= __("Montant") %}</th>
+			<th style="width: 20%">{%= __("RIB") %}</th>
+			<th style="width: 20%">{%= __("Banque") %}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for(var i=0, l=data.length; i<l; i++) { %}
+			<tr>
+				<td>{%= data[i].code %}</td>
+				<td>{%= data[i].employee_name %}</td>
+				<td>{%= data[i].net_pay %}</td>
+				<td>{%= data[i].bank_account_no %}</td>
+				<td>{%= data[i].bank_name %}</td>
+			</tr>
+
+		{% } %}
+	</tbody>
+</table>
+<p>{%=  __("Nous vous prions de croire, Monsieur le directeur, à l assurance de nos sentiments distingués.") %}</p>
+<h6 class="text-right">{%= __("LE GERANT") %}</h6>
+
+

@@ -1,0 +1,18 @@
+[
+ {
+  "content": "    <div class=\"container\">\n        <div class=\"logo\">\n        <img src=\"/files/slnee.png\" style=\"height: 200px; width: 200px;\"> \n        </div>\n        <div class=\"address\">\n            <h3> \n            R.C. : B2416902007 - M.F. : 989290S/A/M/000<br>\n            RIB: 04908079001124417537<br>\n            adresse: 89 bis Avenue Habib Bourguiba Ariana 2080<br>\n            Tel / Fax : 71702402<br>\n            E-mail: career@slnee.com / foulen.foulen@slnee.com<br>\n            Site Web: https://www.slnee.com/<br>\n            </h3>\n        </div>\n\n    </div>\n<style>\n.container{\n    display: grid;\n    grid-template-columns:350px 1fr 1fr 1fr; \n}\n.logo{\n    grid-column-start:1 ; \n    grid-column-end:1 ;\n}\n.address{\n    grid-column-start:2 ;\n    grid-column-end:4 ;\n\n}\nh3 {\n    font-family: \"Lucida Console\", \"Courier New\", monospace;\n    font-size: 16px;\n    font-weight: normal;\n}\n</style>\n\n",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Letter Head",
+  "footer": null,
+  "image": null,
+  "is_default": 0,
+  "letter_head_name": "livre de paie",
+  "modified": "2022-06-15 12:21:20.462455",
+  "name": "livre de paie",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source": "HTML"
+ }
+]

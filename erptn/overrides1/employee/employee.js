@@ -29,6 +29,8 @@
                 validated = false;
                 return false;
         }
+});
+/*
 	if (frm.doc.n_e_h && frm.doc.n_e_h > frm.doc.max_enfants){
                 msgprint(__("Veuillez resaisir le nombre des enfants infirmes pris-en charge"));
                 validated = false;

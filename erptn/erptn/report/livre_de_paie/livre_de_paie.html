@@ -1,0 +1,23 @@
+<h1 class="text-center">{%= __("ETAT DE VIREMENT")  %} </h1>
+<h2 class="text-center">{%= __("A l'attention de Monsieur le chef d'agence de la Banque X")  %} </h2>
+<style>h1{font-family: "Lucida Console", "Courier New", monospace; font-size: 30px; font-weight: bold;}h2{font-family: "Lucida Console", "Courier New", 
+monospace; font-size: 14px; font-weight: bold;}</style>
+<h4>{%= __("Objet: Demande de virements des salaires") %} </h4>
+<p>{%= __("Nous vous prions de bien vouloir par le débit de notre compte N ° 20014140001121381012") %} <br> {%= __("effectuer les virements suivants :") %}</p>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th style="width: 25%">{%= __("Employeehgj") %}</th>
+			<th style="width: 15%">{%= __("Net Paie") %}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for(var i=0, l=data.length; i<l; i++) { %}
+			<tr>
+				<td>{%= data[i].employee %}</td>
+				<td>{%= data[i].net_pay %}</td>												
+			</tr>
+		{% } %}
+	</tbody>
+</table>

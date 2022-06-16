@@ -1,0 +1,18 @@
+<h2 class="text-center">{%= __("Livre paie")  %{}</h2>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th style="width: 25%">{%= __("Employee") %}</th>
+			<th style="width: 15%">{%= __("Net Paie") %}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for(var i=0, l=data.length; i<l; i++) { %}
+			<tr>
+				<td>{%= data[i].employee %}</td>
+				<td>{%= data[i].net_pay %}</td>												
+			</tr>
+		{% } %}
+	</tbody>
+</table>

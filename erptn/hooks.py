@@ -51,7 +51,14 @@ fixtures = ["Custom Field",{"dt":"Income Tax Slab"},
 {"dt":"Regime CNSS"},
 {"dt":"Holiday List"},
 {"dt":"Child Allocation"},
-{"dt":"Print Format"}]
+{"dt":"Salary Component"},
+{"dt":"Salary Structure"},
+{"dt":"Salary Structure Assignment"},
+{"dt":"Salary Slip"},
+{"dt":"Employee"},
+{"dt":"Print Format"},
+{"dt":"Letter Head"},
+{"dt":"Report"}]
 # application home page (will override Website Settings)
 # home_page = "login"
 
